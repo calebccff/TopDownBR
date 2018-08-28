@@ -42,7 +42,11 @@ void draw(){
   }
 
   fill(255);
+<<<<<<< HEAD
   text(others.values().size(), 50, 50);
+=======
+  text(frameRate, 50, 50);
+>>>>>>> origin/master
 }
 
 

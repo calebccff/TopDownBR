@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 public class NetThread extends MasterThread{
+=======
+class NetThread extends MasterThread{
+>>>>>>> origin/master
   String lastPacket = "";
   UDP udp;
 
@@ -30,12 +34,19 @@ public class NetThread extends MasterThread{
   }
 
   public void send(String msg){
+<<<<<<< HEAD
     udp.send(msg, "192.168.1.204", 1234);
+=======
+    udp.send(msg, "127.0.0.1", 1234);
+>>>>>>> origin/master
   }
 
   public void receive(byte[] _data, String ip, int port){
     lastPacket = new String(_data);
+<<<<<<< HEAD
     println("Received: "+lastPacket);
+=======
+>>>>>>> origin/master
   }
 
 }
