@@ -115,8 +115,8 @@ class Player extends MasterEntity{
 
   String bulletToString(){
     String ret = "";
-    for(Bullet b : bullets){
-      ret += b.toString()+"@";
+    for(int i = 0; i < bullets.size(); i++){
+      ret += bullets.get(i).toString()+"@";
     }
     if(ret.length() > 2){
       ret = ret.substring(0, ret.length()-2);

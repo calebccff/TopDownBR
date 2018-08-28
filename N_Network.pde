@@ -30,7 +30,7 @@ public class NetThread extends MasterThread{
   }
 
   public void send(String msg){
-    udp.send(msg, "127.0.0.1", 1234);
+    udp.send(msg, "192.168.1.204", 1234);
   }
 
   public void receive(byte[] _data, String ip, int port){
