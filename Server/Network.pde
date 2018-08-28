@@ -2,10 +2,10 @@
 void send(){
   String data = "";
   for(String k : clients.keySet()){
-    data += clients.get(k).toString()+"@";
+    data += clients.get(k).toString()+k+"@";
   }
   if(data.length() > 2){
-    data = data.substring(0, data.length()-2); //Remove last @ sign
+    data = data.substring(0, data.length()-1); //Remove last @ sign
   }
   println(data);
   for(String k : clients.keySet()){
