@@ -1,5 +1,3 @@
-final int PHYS_TICK = 60;
-
 abstract class MasterThread extends Thread{
   private Thread t;
   int TICKRATE;
@@ -15,7 +13,7 @@ abstract class MasterThread extends Thread{
     while(!stop){
       int fstart = millis(); //Frame start time
       runLoop();
-      delay(constrain( 1000/PHYS_TICK-(millis()-fstart) , 0, 1000/PHYS_TICK)); //To maintain a consistent tickrate, it's 1/60 seconds - frame time
+      delay(constrain( 1000/TICKRATE-(millis()-fstart) , 0, 1000/TICKRATE)); //To maintain a consistent tickrate, it's 1/60 seconds - frame time
     }
   }
 

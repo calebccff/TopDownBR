@@ -3,7 +3,7 @@ public class NetThread extends MasterThread{
   UDP udp;
 
   NetThread(){
-    TICKRATE = 30;
+    TICKRATE = 64; //64 tick servers... high tick rate cuz no lag compensation
     //Networking
     udp = new UDP(this, 1235); //LISTEN PORT
     udp.listen(true);
@@ -14,7 +14,7 @@ public class NetThread extends MasterThread{
     if(!lastPacket.equals("")){ //A new packet arrived!
       String[] ot = lastPacket.split("@");
       for(String o : ot){
-        if(o.contains("you")){
+        if(o.contains("you")){ //Ignore data about local... better alternative to not send it?
           continue;
         }
         String[] player = o.split("]"); //0.. is player data, last is ip
