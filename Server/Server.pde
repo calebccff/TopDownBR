@@ -10,7 +10,7 @@ void setup(){
   fill(255);
 
   udp = new UDP(this, 1234);
-  udp.log(true);
+  //udp.log(true);
   udp.listen(true);
 }
 
@@ -18,6 +18,7 @@ void draw(){
   background(50);
 
   for(Client c : clients.values()){
-    ellipse(c.pos.x/100, c.pos.y/100, 20, 20);
+    ellipse(c.pos.x/10, c.pos.y/10, 20, 20);
   }
+  send();
 }

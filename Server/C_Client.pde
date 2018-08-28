@@ -18,15 +18,15 @@ class Client{
   }
 
   String toString(){
-    return pos.toString()+"#"+bulletToString();
+    return pos.toString()+bulletToString();
   }
 
   String bulletToString(){
     String ret = "";
     for(Bullet b : bullets){
-      ret += b.toString()+"@";
+      ret += b.toString();
     }
-    return ret.substring(0, ret.length()-2);
+    return ret;
   }
 
   void addBullet(String s){

@@ -4,6 +4,7 @@ class ThreadHandler{
   ThreadHandler(){
     threads.put("physics", new PhysThread());
     threads.put("movement", new MoveThread());
+    threads.put("network", new NetThread());
 
     for(MasterThread mt : threads.values()){ //Starts all the threads
       mt.create();

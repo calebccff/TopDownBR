@@ -28,4 +28,8 @@ class Bullet extends MasterEntity{
     fill(150, 45, 80);
     ellipse(dpos.x*scr.scale, dpos.y*scr.scale, size.x*scr.scale, size.y*scr.scale);
   }
+
+  String toString(){
+    return pos.toString();
+  }
 }

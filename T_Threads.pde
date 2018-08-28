@@ -22,15 +22,3 @@ class MoveThread extends MasterThread{
     pmousePressed = mousePressed;
   }
 }
-
-class NetThread extends MasterThread{
-
-  NetThread(){
-    TICKRATE = 30;
-  }
-
-  void runLoop(){
-    String toSend = "";
-    
-  }
-}

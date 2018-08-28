@@ -8,7 +8,7 @@ Map map;
 
 boolean pmousePressed, mouseReleased;
 
-UDP udp;
+HashMap<String, NetworkPlayer> others = new HashMap<String, NetworkPlayer>();
 
 void settings(){
   size(1280, 720);
@@ -26,11 +26,8 @@ void setup(){
   player = new Player();
   scr = new Screen();
 
+  //Threading, MUST be the last thing to be created to avoid null pointers
   th = new ThreadHandler();
-
-  //Networking
-  udp = new UDP(this, 1235); //LISTEN PORT
-  udp.listen(true);
 }
 
 void draw(){
@@ -43,6 +40,9 @@ void draw(){
   for(int j = 0; j < width/32; j++){
     text(j, 10, j*32);
   }
+
+  fill(255);
+  text(frameRate, 50, 50);
 }
 
 
@@ -51,4 +51,11 @@ void render(){
 
   map.render();
   player.render();
+  renderOthers();
+}
+
+void renderOthers(){
+  for(NetworkPlayer o : others.values()){
+    o.render();
+  }
 }

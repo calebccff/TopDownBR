@@ -108,8 +108,39 @@ class Player extends MasterEntity{
       bullets.get(i).physics();
     }
   }
+
+  String toString(){
+    return pos.toString()+"#"+bulletToString();
+  }
+
+  String bulletToString(){
+    String ret = "";
+    for(Bullet b : bullets){
+      ret += b.toString()+"@";
+    }
+    if(ret.length() > 2){
+      ret = ret.substring(0, ret.length()-2);
+    }
+    return ret;
+  }
 }
 
 class NetworkPlayer extends Player{
 
+  NetworkPlayer(String pos){
+    super();
+    update(pos);
+  }
+
+  void update(String d1) { //Takes a string from the server and gets the position
+    String[] vals = d1.split(",");
+    for (int i = 0; i < vals.length; i++) {
+      vals[i] = vals[i].replace("[", "").replace(" ", "").replace("]", "");
+    }
+    float[] p = new float[3];
+    for (int i = 0; i < vals.length; i++) {
+      p[i] = Float.parseFloat(vals[i]);
+    }
+    pos.set(p[0], p[1], p[2]); //Works with 3d vectors but should be good with 2d
+  }
 }
