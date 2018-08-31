@@ -23,8 +23,8 @@ public class Buffer{
   }
 
   void addVal(ArrayList ar){ //Iterates and adds each object!
-    for(Object o : ar){
-      addVal(o);
+    for(int i = 0; i < ar.size(); i++){
+      addVal((Object)ar.get(i));
     }
   }
 
@@ -72,7 +72,7 @@ public class Buffer{
 */
 
   void receive(byte[] _data, String ip, int port){
-    String data = new String(_data);
+    data = new String(_data);
     String[] items = data.split("}"); //Multiple items would be client side objects (bullets should be this, not part of the client)
     for(String item : items){
       if(getNetItemType(item) == 0){

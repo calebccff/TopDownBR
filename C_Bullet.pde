@@ -25,7 +25,7 @@ class Bullet extends MasterEntity{
   void physics(){
     life++;
     MasterObject hit = worldCollide();
-    if(hit != null || life < 1200){
+    if(hit != null || dpos.x < 0 || dpos.y < 0 || dpos.x > width || dpos.y > height || life > 1200){
       dead = true;
     }
     pos.add(PVector.mult(dir, BULLET_VEL));

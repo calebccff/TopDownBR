@@ -2,12 +2,14 @@ import hypermedia.net.*;
 
 final int MAP_SIZE = 4096;
 
+String data = "";
+
 
 HashMap<String, Client> clients = new HashMap<String, Client>();
 Buffer buffer;
 
 void setup(){
-  size(400, 400);
+  size(600, 200);
   fill(255);
 
   buffer = new Buffer();
@@ -21,6 +23,8 @@ void draw(){
   }
   //TODO: Buffer things
   sendData();
+  fill(50, 255, 50);
+  text("Players: "+clients.values().size()+"\nClient Data: "+data, 10, 50);
 }
 
 void sendData(){
