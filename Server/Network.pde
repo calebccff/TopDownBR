@@ -1,4 +1,3 @@
-
 void send(){
   String data = "";
   for(String k : clients.keySet()){

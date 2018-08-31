@@ -12,7 +12,7 @@ HashMap<String, NetworkPlayer> others = new HashMap<String, NetworkPlayer>();
 
 void settings(){
   size(1280, 720);
-  noSmooth(); //Forces antialiasing to be disabled so graphics don't get blurred when scaled.
+  smooth(8); //Forces antialiasing to be disabled so graphics don't get blurred when scaled.
 }
 
 void setup(){
@@ -42,7 +42,7 @@ void draw(){
   }
 
   fill(255);
-  text(others.values().size(), 50, 50);
+  text(frameRate, 50, 50);
 }
 
 

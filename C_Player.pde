@@ -127,9 +127,9 @@ class Player extends MasterEntity{
 
 class NetworkPlayer extends Player{
 
-  NetworkPlayer(String pos){
+  NetworkPlayer(String s){
     super();
-    update(pos);
+    update(s);
   }
 
   void update(String d1) { //Takes a string from the server and gets the position
