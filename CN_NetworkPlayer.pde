@@ -11,8 +11,7 @@ class NetworkPlayer extends Player{
     //More hardcoded getting of data, again use identifiers for data
     String[] props = item.split("]");
     pos = propToPVector(props[0]); //Use some count of nextProp method with an iterator.
-    dir = propToPVector(props[1]);
-    println(pos);
+    dir = PVector.mult(PVector.fromAngle(float(props[1])-PI), 60);
     for(int i = 2; i < props.length; i++){
       bullets.add(new Bullet(propToPVector(props[i]))); //All the bullets
     }

@@ -7,7 +7,8 @@ int getNetItemID(String item){
 }
 
 PVector propToPVector(String prop){
+  //println(prop);
   prop = prop.substring(1, prop.length()); //Remove the leading # (This is what broke it)
   String[] parts = prop.split(",");
-  return new PVector(int(parts[0]), int(parts[1]));
+  return new PVector(float(parts[0]), float(parts[1]));
 }

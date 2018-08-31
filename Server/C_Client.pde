@@ -15,7 +15,9 @@ class Client{
     fill(255);
     ellipse(pos.x/10, pos.y/10, 20, 20);
     stroke(50, 50, 230);
-    line(pos.x/10, pos.y/10, pos.x/10+dir.x/10, pos.y/10+dir.x/10); //BAD
+    line(pos.x/10, pos.y/10, pos.x/10+dir.x, pos.y/10+dir.y); //BAD
+    // print("Server: ");
+    // println(dir);
   }
 
   void update(String data){
@@ -23,7 +25,7 @@ class Client{
     //More hardcoded getting of data, again use identifiers for data
     String[] props = data.split("]");
     pos = propToPVector(props[0]);
-    dir = propToPVector(props[1]);
+    dir = PVector.mult(PVector.fromAngle(float(props[1])-PI), 60); //Forgot to send this back
     for(int i = 2; i < props.length; i++){
       bullets.add(new Bullet(propToPVector(props[i]))); //All the bullets
     }
@@ -39,6 +41,7 @@ class Client{
   void buffer(){
     buffer.startObject(0, id);
     buffer.addVal(pos);
+    buffer.addVal(dir.heading()+PI);
     buffer.addVal(bullets);
     buffer.endObject(); //Use a unique ID not an IP Address, cuz that's dangerous
   }

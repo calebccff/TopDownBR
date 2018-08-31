@@ -111,9 +111,11 @@ class Player extends MasterEntity{
   }
 
   String buffer(){ //To be moved to buffer class similar to server.
+    print("Client: ");
+    println(dir);
     String buf = type+"#"
     +pos.x+","+pos.y+"]"
-    +dir.x+","+dir.y+"]"; //This is new, direction player is looking.
+    +(dir.heading()+PI)+"]"; //This is new, direction player is looking.
     for(int i = 0; i < bullets.size(); i++){
       buf += bullets.get(i).pos.x+","+bullets.get(i).pos.y+"]";
     }
