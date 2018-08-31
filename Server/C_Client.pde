@@ -2,6 +2,7 @@ class Client{
   int id;
 
   PVector pos;
+  PVector dir;
   ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 
   Client(String data, int id){
@@ -9,14 +10,31 @@ class Client{
     this.id = id;
   }
 
-  void update(String data){ //If it's not broken....
-    if(data.substring(0, 3).equals("shot")){
-      addBullet(data.substring(4, data.length()-2));
-    }else{
-      String[] parts = data.split("#");
-      pos = PVFromString(parts[0]);
+  void display(){
+    noStroke();
+    fill(255);
+    ellipse(pos.x/10, pos.y/10, 20, 20);
+    stroke(50, 50, 230);
+    line(pos.x/10, pos.y/10, pos.x/10+dir.x/10, pos.y/10+dir.x/10); //BAD
+  }
+
+  void update(String data){
+    data = data.substring(data.indexOf("#"), data.length()); //Ignore metadata
+    //More hardcoded getting of data, again use identifiers for data
+    String[] props = data.split("]");
+    pos = propToPVector(props[0]);
+    dir = propToPVector(props[1]);
+    for(int i = 2; i < props.length; i++){
+      bullets.add(new Bullet(propToPVector(props[i]))); //All the bullets
     }
   }
+  /*
+  if(data.substring(0, 3).equals("shot")){
+    addBullet(data.substring(4, data.length()-2));
+  }else{
+    String[] parts = data.split("#");
+    pos = PVFromString(parts[0]);
+  }*/
 
   void buffer(){
     buffer.startObject(0, id);

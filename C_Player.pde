@@ -5,6 +5,7 @@ class Player extends MasterEntity{
   PVector frameVel;
   PVector dir;
   PVector dpos;
+  int type = 0;
 
   ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 
@@ -109,8 +110,14 @@ class Player extends MasterEntity{
     }
   }
 
-  String buffer(){
-    return toString();
+  String buffer(){ //To be moved to buffer class similar to server.
+    String buf = type+"#"
+    +pos.x+","+pos.y+"]"
+    +dir.x+","+dir.y+"]"; //This is new, direction player is looking.
+    for(int i = 0; i < bullets.size(); i++){
+      buf += bullets.get(i).pos.x+","+bullets.get(i).pos.y+"]";
+    }
+    return buf+"}";
   }
 
   String toString(){ //Deprecated data encoding, will switch to server method.

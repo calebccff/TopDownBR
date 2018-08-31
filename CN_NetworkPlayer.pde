@@ -10,8 +10,10 @@ class NetworkPlayer extends Player{
     item = item.substring(item.indexOf("#"), item.length()); //Ignore metadata
     //More hardcoded getting of data, again use identifiers for data
     String[] props = item.split("]");
-    pos = propToPVector(props[0]);
-    for(int i = 1; i < props.length; i++){
+    pos = propToPVector(props[0]); //Use some count of nextProp method with an iterator.
+    dir = propToPVector(props[1]);
+    println(pos);
+    for(int i = 2; i < props.length; i++){
       bullets.add(new Bullet(propToPVector(props[i]))); //All the bullets
     }
   }

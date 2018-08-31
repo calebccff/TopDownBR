@@ -34,7 +34,7 @@ public class NetThread extends MasterThread{
 
   public void receive(byte[] _data, String ip, int port){
     lastPacket = new String(_data); //This adds 1 tick of latency
-    println("Received: "+lastPacket.length());
+    //println("Received "+_data.length+" bytes");
   }
 
 }

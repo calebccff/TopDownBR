@@ -17,7 +17,7 @@ void draw(){
   background(50);
 
   for(Client c : clients.values()){
-    ellipse(c.pos.x/10, c.pos.y/10, 20, 20);
+    c.display();
   }
   //TODO: Buffer things
   sendData();

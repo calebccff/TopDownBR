@@ -72,15 +72,18 @@ public class Buffer{
 */
 
   void receive(byte[] _data, String ip, int port){
-    println(ip);
-    println(clients.keySet());
     String data = new String(_data);
-    if(clients.containsKey(ip)){
-      println("Updated existing client");
-      clients.get(ip).update(data);
-    }else{
-      println("Created new client");
-      clients.put(ip, new Client(data, newClientID()));
+    String[] items = data.split("}"); //Multiple items would be client side objects (bullets should be this, not part of the client)
+    for(String item : items){
+      if(getNetItemType(item) == 0){
+        int id = getNetItemID(item);
+        if(clients.containsKey(ip)){
+          clients.get(ip).update(item);
+        }
+        else{ //New client connected
+          clients.put(ip, new Client(item, newClientID()));
+        }
+      }
     }
   }
 }
@@ -91,3 +94,12 @@ class OType{
   int ENTITY = 2;
   int META = 3;
 }
+
+/*
+
+if(clients.containsKey(ip)){
+  clients.get(ip).update(data);
+}else{
+  clients.put(ip, new Client(data, newClientID()));
+}
+*/
