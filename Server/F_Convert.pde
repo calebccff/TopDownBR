@@ -1,4 +1,4 @@
-PVector PVFromtString(String d){ //Converts a pvector from string representation to PVector object
+PVector PVFromString(String d){ //Converts a pvector from string representation to PVector object
   String[] vals = d.split(",");
   for(int i = 0; i < vals.length; i++){
     vals[i] = vals[i].replace("[", "").replace(" ", "").replace("]", "");

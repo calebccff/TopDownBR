@@ -1,20 +1,28 @@
 class Client{
-  String ip;
+  int id;
 
   PVector pos;
   ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 
-  Client(String data){
+  Client(String data, int id){
     update(data);
+    this.id = id;
   }
 
-  void update(String data){
+  void update(String data){ //If it's not broken....
     if(data.substring(0, 3).equals("shot")){
       addBullet(data.substring(4, data.length()-2));
     }else{
       String[] parts = data.split("#");
-      pos = PVFromtString(parts[0]);
+      pos = PVFromString(parts[0]);
     }
+  }
+
+  void buffer(){
+    buffer.startObject(0, id);
+    buffer.addVal(pos);
+    buffer.addVal(bullets);
+    buffer.endObject(); //Use a unique ID not an IP Address, cuz that's dangerous
   }
 
   String toString(){
@@ -30,7 +38,7 @@ class Client{
   }
 
   void addBullet(String s){
-    bullets.add(new Bullet(PVFromtString(s)));
+    bullets.add(new Bullet(PVFromString(s)));
   }
 }
 
@@ -58,6 +66,7 @@ class Bullet{
   //   ellipse(dpos.x*scr.scale, dpos.y*scr.scale, size.x*scr.scale, size.y*scr.scale);
   // }
 
+  @Override
   String toString(){
     return pos.toString();
   }

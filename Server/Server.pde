@@ -20,4 +20,26 @@ void draw(){
     ellipse(c.pos.x/10, c.pos.y/10, 20, 20);
   }
   //TODO: Buffer things
+  sendData();
 }
+
+void sendData(){
+  for(Client c : clients.values()){
+    c.buffer(); //The verb
+  }
+  buffer.flush(); //Sends data to all clients.
+}
+/*
+void flush(){ //Sends data to clients
+  String data = "";
+  for(String k : clients.keySet()){
+    data += clients.get(k).toString()+k+"@";
+  }
+  if(data.length() > 2){
+    data = data.substring(0, data.length()-1); //Remove last @ sign
+  }
+  println("SERVER: sending"+data);
+  for(String k : clients.keySet()){
+    udp.send(data.replace(k, "you"), k, 1235);
+  }
+}*/

@@ -8,7 +8,7 @@ Map map;
 
 boolean pmousePressed, mouseReleased;
 
-HashMap<String, NetworkPlayer> others = new HashMap<String, NetworkPlayer>();
+HashMap<Integer, NetworkPlayer> others = new HashMap<Integer, NetworkPlayer>();
 
 void settings(){
   size(1280, 720);
